@@ -1,13 +1,15 @@
 version: '3.0'
 services:
   web:
-    image: alexcheng/magento2
+    build: vonzimp/magento_pwa
     ports:
       - "80:80"
     links:
       - db
     env_file:
       - env
+    volumes:
+      - /home/paul/Documents/magento/orange-theme:/var/www/html/app/design/frontend/orange-theme
   db:
     image: mysql:5.6.23
     volumes:
