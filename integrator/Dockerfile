@@ -11,7 +11,6 @@ ENV COMPOSER_HOME /var/www/.composer/
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer
 COPY ./auth.json $COMPOSER_HOME
-COPY ./composer.json $INSTALL_DIR
 
 RUN requirements="libpng12-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype6 libjpeg-turbo8 libjpeg-turbo8-dev libpng12-dev libfreetype6-dev libicu-dev libxslt1-dev" \
     && apt-get update \
@@ -46,6 +45,7 @@ RUN chmod +x /usr/local/bin/install-magento
 COPY ./install-sampledata /usr/local/bin/install-sampledata
 RUN chmod +x /usr/local/bin/install-sampledata
 
+COPY ./composer.json $INSTALL_DIR
 RUN a2enmod rewrite
 RUN echo "memory_limit=2048M" > /usr/local/etc/php/conf.d/memory-limit.ini
 
