@@ -15,6 +15,7 @@ COPY ./auth.json $COMPOSER_HOME
 RUN requirements="libpng12-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype6 libjpeg-turbo8 libjpeg-turbo8-dev libpng12-dev libfreetype6-dev libicu-dev libxslt1-dev" \
     && apt-get update \
     && apt-get install -y $requirements \
+    && apt-get install -y git \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
@@ -31,8 +32,11 @@ RUN requirements="libpng12-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype
 
 RUN chsh -s /bin/bash www-data
 
+RUN cd $INSTALL_DIR && git clone -b 2.3-develop https://github.com/magento/magento2.git --depth 1 .
 RUN chown -R www-data:www-data /var/www
-RUN su www-data -c "composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition $INSTALL_DIR $MAGENTO_VERSION"
+RUN su www-data -c "cd $INSTALL_DIR && composer install"
+RUN su www-data -c "cd $INSTALL_DIR && composer config repositories.magento composer https://repo.magento.com/"  
+
 
 RUN cd $INSTALL_DIR \
     && find . -type d -exec chmod 770 {} \; \

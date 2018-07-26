@@ -9,7 +9,7 @@ services:
     env_file:
       - env
     volumes:
-      - /home/paul/Documents/magento/orange-theme:/var/www/html/app/design/frontend/orange-theme
+      - ~/Documents/magento/orange-theme:/var/www/html/app/design/frontend/orange-theme
   db:
     image: mysql:5.6.23
     volumes:

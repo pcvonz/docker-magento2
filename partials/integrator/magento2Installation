@@ -1,2 +1,4 @@
+RUN cd $INSTALL_DIR && git clone -b 2.3-develop https://github.com/magento/magento2.git --depth 1 .
 RUN chown -R www-data:www-data /var/www
-RUN su www-data -c "composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition $INSTALL_DIR $MAGENTO_VERSION"
+RUN su www-data -c "cd $INSTALL_DIR && composer install"
+RUN su www-data -c "cd $INSTALL_DIR && composer config repositories.magento composer https://repo.magento.com/"  
