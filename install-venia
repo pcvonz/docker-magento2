@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+su www-data <<EOSU
+
+cd /var/www/html && composer require --dev magento/theme-frontend-venia
+cd /var/www/html && bin/magento module:enable Magento_Pwa && bin/magento setup:upgrade
+
+EOSU

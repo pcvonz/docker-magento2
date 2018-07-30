@@ -42,6 +42,9 @@ RUN setfacl -d -m g::rwx /var/www/html
 COPY ./install-magento /usr/local/bin/install-magento
 RUN chmod +x /usr/local/bin/install-magento
 
+COPY ./install-venia /usr/local/bin/install-venia
+RUN chmod +x /usr/local/bin/install-venia
+
 COPY ./install-sampledata /usr/local/bin/install-sampledata
 RUN chmod +x /usr/local/bin/install-sampledata
 

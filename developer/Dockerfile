@@ -46,6 +46,9 @@ RUN su www-data -c "cd $INSTALL_DIR && composer config repositories.magento comp
 COPY ./install-magento /usr/local/bin/install-magento
 RUN chmod +x /usr/local/bin/install-magento
 
+COPY ./install-venia /usr/local/bin/install-venia
+RUN chmod +x /usr/local/bin/install-venia
+
 COPY ./install-sampledata /usr/local/bin/install-sampledata
 RUN chmod +x /usr/local/bin/install-sampledata
 

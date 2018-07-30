@@ -1,7 +1,7 @@
 version: '3.0'
 services:
   web:
-    build: .
+    image: vonzimp/magento_pwa
     ports:
       - "80:80"
       - "443:443"
@@ -9,10 +9,10 @@ services:
       - db
     env_file:
       - env
-    volumes:
-      - ~/Documents/magento/orange-theme:/var/www/html/app/design/frontend/orange-theme
-      - ~/Documents/magento/pwa-studio/packages/pwa-module:/var/www/html/app/code/Magento/Pwa
-      - ~/Documents/magento/pwa-studio/packages/venia-concept:/var/www/html/app/design/frontend/venia
+    # volumes:
+    #   - ~/Documents/magento/orange-theme:/var/www/html/app/design/frontend/orange-theme
+    #   - ~/Documents/magento/pwa-studio/packages/pwa-module:/var/www/html/app/code/Magento/Pwa
+    #   - ~/Documents/magento/pwa-studio/packages/venia-concept:/var/www/html/app/design/frontend/venia
   db:
     image: mysql:5.6.23
     volumes:
