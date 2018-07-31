@@ -87,8 +87,7 @@
         "phpmd/phpmd": "@stable",
         "phpunit/phpunit": "~6.5.0",
         "sebastian/phpcpd": "~3.0.0",
-        "squizlabs/php_codesniffer": "3.3.0",
-        "magento/theme-frontend-venia": "1.0"
+        "squizlabs/php_codesniffer": "3.3.0"
     },
     "replace": {
         "magento/module-marketplace": "*",
@@ -256,13 +255,6 @@
         "0": {
             "type": "composer",
             "url": "https://repo.magento.com/"
-        },
-        "pwadev": {
-            "type": "path",
-            "url": "app/design/frontend/venia",
-            "options": {
-                "symlinks": true
-            }
         }
     },
     "extra": {
