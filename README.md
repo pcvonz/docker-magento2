@@ -153,24 +153,14 @@ volumes:
 1. run `git clone https://github.com/magento-research/pwa-studio.git`
    wherever you wish to keep the PWA code.
 2. The version number in Venia is blank, after description add ..."version: "1.0"
-3. In the docker-compose.yml file set-up a volume that points to
+3. In `docker-compose.override.yml` file set-up a volume that points to
    `path-to-pwa-studio/packages/venia-concept` and
    `path-to-pwa-studio/packages/pwa-module` (reference the previous section).
    Reference the `link module` and `link theme directory` section of the `setup
    venia guide` [here](https://magento-research.github.io/pwa-studio/venia-pwa-concept/setup/).
    Note: Creating volume mounts satisfies the need to create `sym` links.
-   A good way to accomplish this is to use a [docker-compose override](https://docs.docker.com/compose/extends/);
-   
-   Example `docker-compose.override.yml`:
-   ```yml
-   version: '3.0'
-services:
-  web:
-    volumes:
-      - ~/Documents/magento/pwa-studio/packages/pwa-module:/var/www/html/app/code/Magento/Pwa
-      - ~/Documents/magento/pwa-studio/packages/venia-concept:/var/www/html/app/design/frontend/venia
-   ```
-   
+   More information on the override file: [docker-compose override](https://docs.docker.com/compose/extends/);
+   Example `docker-compose.override.yml` below.
 4. Run the `install-venia` script in the docker image. `docker exec -it container_id install-venia`.
 5. Follow the rest of the setup guide starting with `Set environement variables`
    [here](https://magento-research.github.io/pwa-studio/venia-pwa-concept/setup/).
@@ -180,7 +170,16 @@ services:
    progress on the `venia` concept. If you have a problem, feel free to submit an
    issue!
 
-Note: The `composer.json` file includes the venia concept as a dev requirement. 
+Example `docker-compose.override.yml`:
+
+```yml
+version: '3.0'
+services:
+  web:
+    volumes:
+      - ~/Documents/magento/pwa-studio/packages/pwa-module:/var/www/html/app/code/Magento/Pwa
+      - ~/Documents/magento/pwa-studio/packages/venia-concept:/var/www/html/app/design/frontend/venia
+ ```
 
 ### Modify Magento core files
 
