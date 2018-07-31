@@ -1,4 +1,4 @@
-# Docker image for Magento 2
+# Docker image for Magento 2.3
 
 [![](https://images.microbadger.com/badges/image/alexcheng/magento2.svg)](http://microbadger.com/images/alexcheng/magento2)
 
@@ -77,8 +77,6 @@ $ docker exec -it <container_name> install-magento
 $ docker exec -it <container_name> install-sampledata
 ~~~
 
-**Please note:** Sample data for Magento 2.2.2 doesn't work at the moment, see [this issue](https://github.com/alexcheng1982/docker-magento2/issues/11).
-
 ### Database
 
 The default `docker-compose.yml` uses MySQL as the database and starts [phpMyAdmin](https://www.phpmyadmin.net/). The default URL for phpMyAdmin is `http://localhost:8580`. Use MySQL username and password to log in.
@@ -147,6 +145,29 @@ services:
 volumes:
   db-data:
 ```
+
+### Setting up Venia
+
+[Venia](https://github.com/magento-research/pwa-studio/tree/master/packages/venia-concept) is a proof of concept theme using the new PWA tools that magento 2.3 will come with.
+
+1. run `git clone https://github.com/magento-research/pwa-studio/tree/master/packages/venia-concept`
+   wherever you wish to keep the PWA code.
+2. In the docker-compose.yml file set-up a volume that points to
+   `path-to-pwa-studio/packages/venia-concept` and
+   `path-to-pwa-studio/packages/pwa-module` (reference the previous section).
+   Reference the `link module` and `link theme directory` section of the `setup
+   venia guide` [here](https://magento-research.github.io/pwa-studio/venia-pwa-concept/setup/).
+   Note: Creating volume mounts satisfies the need to create `sym` links.
+3. Run the `install-venia` script in the docker image. `docker exec -it container_id install-venia`.
+4. Follow the rest of the setup guide starting with `Set environement variables`
+   [here](https://magento-research.github.io/pwa-studio/venia-pwa-concept/setup/).
+   The magento base url will be the url of the Magento2 docker image (should be
+   `https://local.magento`) 
+5. At this point you should be able to run `npm start` and see the current
+   progress on the `venia` concept. If you have a problem, feel free to submit an
+   issue!
+
+Note: The `composer.json` file includes the venia concept as a dev requirement. 
 
 ### Modify Magento core files
 
