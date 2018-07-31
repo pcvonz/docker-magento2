@@ -2,7 +2,7 @@
 
 :heart: Forked from [this image](https://github.com/alexcheng1982/docker-magento2) :heart:
 
-:warning: This image is for experimenting with Magento 2.3. In theory, installing the Venia Concept should only be a few commands. :warning:
+:warning: This image is for experimenting with Magento 2.3. With this image installing the Venia Concept should only take a few commands.
 
 This repo converts the [long installation guide](http://devdocs.magento.com/guides/v1.0/install-gde/bk-install-guide.html) of Magento 2 into simple Docker image to use. It uses the same convention as my [Docker image for Magento 1.x](https://github.com/alexcheng1982/docker-magento).
 
