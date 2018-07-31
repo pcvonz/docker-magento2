@@ -160,6 +160,17 @@ volumes:
    venia guide` [here](https://magento-research.github.io/pwa-studio/venia-pwa-concept/setup/).
    Note: Creating volume mounts satisfies the need to create `sym` links.
    A good way to accomplish this is to use a [docker-compose override](https://docs.docker.com/compose/extends/);
+   
+   Example `docker-compose.override.yml`:
+   ```yml
+   version: '3.0'
+services:
+  web:
+    volumes:
+      - ~/Documents/magento/pwa-studio/packages/pwa-module:/var/www/html/app/code/Magento/Pwa
+      - ~/Documents/magento/pwa-studio/packages/venia-concept:/var/www/html/app/design/frontend/venia
+   ```
+   
 4. Run the `install-venia` script in the docker image. `docker exec -it container_id install-venia`.
 5. Follow the rest of the setup guide starting with `Set environement variables`
    [here](https://magento-research.github.io/pwa-studio/venia-pwa-concept/setup/).
