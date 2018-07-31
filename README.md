@@ -152,7 +152,7 @@ volumes:
 
 1. run `git clone https://github.com/magento-research/pwa-studio.git`
    wherever you wish to keep the PWA code.
-2. The version number in Venia is blank, after description add ..."version: "1.0"
+2. The version number in Venia's `composer.json` file is blank which seems to cause issues with the `install-venia` script. Adding any version number should fix it.
 3. In `docker-compose.override.yml` file set-up a volume that points to
    `path-to-pwa-studio/packages/venia-concept` and
    `path-to-pwa-studio/packages/pwa-module` (reference the previous section).
