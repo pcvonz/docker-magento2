@@ -150,7 +150,7 @@ volumes:
 
 [Venia](https://github.com/magento-research/pwa-studio/tree/master/packages/venia-concept) is a proof of concept theme using the new PWA tools that magento 2.3 will come with.
 
-1. run `git clone https://github.com/magento-research/pwa-studio/tree/master/packages/venia-concept`
+1. run `https://github.com/magento-research/pwa-studio.git`
    wherever you wish to keep the PWA code.
 2. In the docker-compose.yml file set-up a volume that points to
    `path-to-pwa-studio/packages/venia-concept` and
