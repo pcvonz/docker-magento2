@@ -1,3 +1,0 @@
-RUN su www-data -c "cd $INSTALL_DIR && git clone -b 2.3-develop https://github.com/magento/magento2.git --depth 1 ."
-RUN su www-data -c "cd $INSTALL_DIR && composer install"
-RUN su www-data -c "cd $INSTALL_DIR && composer config repositories.magento composer https://repo.magento.com/"  

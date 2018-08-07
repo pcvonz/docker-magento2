@@ -1,10 +1,10 @@
 FROM alexcheng/apache2-php7:7.1.11
 
-LABEL maintainer="alexcheng1982@gmail.com"
+LABEL maintainer="pzimmerman@bargreen.com"
 LABEL version="2.2.5"
-LABEL description="Magento 2.2.5"
+LABEL description="Magento 2.3, forked from docker-magento2 - alexcheng1982"
 
-ENV MAGENTO_VERSION 2.2.5
+ENV MAGENTO_VERSION 2.3
 ENV INSTALL_DIR /var/www/html
 ENV COMPOSER_HOME /var/www/.composer/
 
@@ -57,7 +57,7 @@ RUN a2enmod rewrite
 RUN a2enmod ssl
 
 RUN mkdir /etc/apache2/ssl
-RUN cd /etc/apache2/ssl && openssl req -subj "/C=US/ST=WA/L=WA/O=bargreen/OU=IT/CN=local.magento" -x509 -nodes -days 1095 -newkey rsa:2048 -out server.crt -keyout server.key
+RUN cd /etc/apache2/ssl && openssl req -subj "/C=US/ST=WA/L=WA/O=Dockertest/OU=IT/CN=local.magento" -x509 -nodes -days 1095 -newkey rsa:2048 -out server.crt -keyout server.key
 
 COPY ./ssl-config.conf /etc/apache2/sites-enabled/ssl-config.conf
 

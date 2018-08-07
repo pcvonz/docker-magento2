@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-su www-data <<EOSU
-
-cd /var/www/html && git clone -b 2.3-develop https://github.com/magento/magento2-sample-data.git
-
-php -f /var/www/html/magento2-sample-data/dev/tools/build-sample-data.php -- --ce-source="/var/www/html"
-
-EOSU
