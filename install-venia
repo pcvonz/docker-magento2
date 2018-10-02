@@ -2,7 +2,7 @@
 
 su www-data <<EOSU
 
-cd /var/www/html && composer config repositories.venia '{"type":"path","url":"app/design/frontend/venia","options":{"symlinks":true}}'
+cd /var/www/html && composer config repositories.venia '{"type":"path","url":"app/design/frontend/venia"}'
 cd /var/www/html && composer require --dev "magento/theme-frontend-venia:*"
 cd /var/www/html && bin/magento module:enable Magento_Pwa && bin/magento setup:upgrade
 

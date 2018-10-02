@@ -1,0 +1,9 @@
+#!/bin/bash
+MAGENTO=$(docker-compose ps web | awk 'FNR == 3 {print $1}')
+MYSQL=$(docker-compose ps db | awk 'FNR == 3 {print $1}')
+
+# docker exec $MYSQL echo "UPDATE core_config_data SET value=2 WHERE path='design/theme/theme_id'" | mysql -u magento --password="magento" "magento"
+docker cp change_theme $MYSQL:/usr/local/bin
+docker exec $MYSQL chmod +x /usr/local/bin/change_theme
+docker exec $MYSQL change_theme
+docker exec $MAGENTO su www-data && bin/magento cache:clean && bin/magento cache:flush

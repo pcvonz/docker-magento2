@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo "UPDATE core_config_data SET value=4 WHERE path='design/theme/theme_id'" | mysql -u magento --password="magento" "magento"
