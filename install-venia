@@ -1,14 +1,14 @@
-#!/usr/bin/env bash
+#/usr/bin/env bash
 
 su www-data <<EOSU
 
 cd /var/www/html && composer config repositories.venia '{"type":"path","url":"app/design/frontend/venia"}'
-cd /var/www/html && composer config repositories.module-catalog-sample-data-venia '{"type": "git"', "url": "git@github.com:PMET-public/module-catalog-sample-data-venia.git"}
-cd /var/www/html && composer config repositories.module-configurable-sample-data-venia '{"type": "git"', "url": "git@github.com:PMET-public/module-configurable-sample-data-venia.git"}
-cd /var/www/html && composer config repositories.module-customer-sample-data-venia '{"type": "git"', "url": "git@github.com:PMET-public/module-customer-sample-data-venia.git"}
-cd /var/www/html && composer config repositories.module-sales-sample-data-venia '{"type": "git"', "url": "git@github.com:PMET-public/module-sales-sample-data-venia.git"}
-cd /var/www/html && composer config repositories.module-tax-sample-data-venia '{"type": "git"', "url": "git@github.com:PMET-public/module-tax-sample-data-venia.git"}
-cd /var/www/html && composer config repositories.sample-data-media-venia '{"type": "git", "url": "git@github.com:PMET-public/sample-data-media-venia.git"}'
+cd /var/www/html && composer config repositories.module-catalog-sample-data-venia git https://github.com/PMET-public/module-venia-catalog-sample-data.git
+cd /var/www/html && composer config repositories.module-configurable-sample-data-venia git https://github.com/PMET-public/module-configurable-sample-data-venia.git
+cd /var/www/html && composer config repositories.module-customer-sample-data-venia git https://github.com/PMET-public/module-customer-sample-data-venia.git
+cd /var/www/html && composer config repositories.module-sales-sample-data-venia git https://github.com/PMET-public/module-sales-sample-data-venia.git
+cd /var/www/html && composer config repositories.module-tax-sample-data-venia git https://github.com/PMET-public/module-tax-sample-data-venia.git
+cd /var/www/html && composer config repositories.sample-data-media-venia git https://github.com/PMET-public/sample-data-media-venia.git
 
 cd /var/www/html && composer require --dev "magento/theme-frontend-venia:*"
 cd /var/www/html && composer require "magento/module-catalog-sample-data-venia: dev-master"
