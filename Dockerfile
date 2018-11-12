@@ -48,8 +48,6 @@ RUN chmod +x /usr/local/bin/install-magento
 COPY ./install-venia /usr/local/bin/install-venia
 RUN chmod +x /usr/local/bin/install-venia
 
-COPY ./composer.json $INSTALL_DIR 
-RUN chown www-data:www-data $INSTALL_DIR/composer.json
 RUN a2enmod rewrite
 RUN a2enmod ssl
 

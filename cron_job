@@ -1,0 +1,5 @@
+#!/bin/bash
+bash remove_everything.sh
+docker-compose up -d
+sleep 20
+bash install_all_magento.sh
