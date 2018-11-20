@@ -199,3 +199,4 @@ When deploying those changes to production servers, we can simply copy all files
 ### Test Magento compatibilities
 
 This Docker images has different tags for corresponding Magento versions, e.g. `2.2.1`, `2.2.2`. You can switch to different Magento versions very easily when testing extensions and themes.
+# Bargreen-Redesign
