@@ -1,0 +1,5 @@
+#!/bin/bash
+
+CONTAINER="docker-magento2_web"
+docker tag $CONTAINER vonzimp/magento_pwa:latest
+docker push vonzimp/magento_pwa

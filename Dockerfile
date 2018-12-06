@@ -7,6 +7,8 @@ LABEL description="Magento 2.3, forked from docker-magento2 - alexcheng1982"
 ENV MAGENTO_VERSION 2.3
 ENV INSTALL_DIR /var/www/html
 ENV COMPOSER_HOME /var/www/.composer/
+ENV GIT_REPO https://github.com/magento/magento2.git
+ENV GIT_BRANCH 2.3
 
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer
@@ -37,7 +39,7 @@ RUN chown -R www-data:www-data /var/www
 RUN chmod g+s /var/www
 RUN setfacl -d -m g::rwx /var/www/html
 
-RUN su www-data -c "cd $INSTALL_DIR && git clone -b 2.3-develop https://github.com/magento/magento2.git --depth 1 ."
+RUN su www-data -c "cd $INSTALL_DIR && git clone -b $GIT_BRANCH $GIT_REPO ."
 RUN su www-data -c "cd $INSTALL_DIR && composer install"
 RUN su www-data -c "cd $INSTALL_DIR && composer config repositories.magento composer https://repo.magento.com/"  
 

@@ -2,4 +2,5 @@
 bash remove_everything.sh
 docker-compose up -d
 sleep 20
+./update_image_to_hub
 bash install_all_magento.sh
