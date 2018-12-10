@@ -40,9 +40,10 @@ RUN chmod g+s /var/www
 RUN setfacl -d -m g::rwx /var/www/html
 
 RUN su www-data -c "cd $INSTALL_DIR && git clone -b $GIT_BRANCH $GIT_REPO ."
+RUN su www-data -c "cd $INSTALL_DIR && git checkout tags/2.3.0"
 RUN su www-data -c "cd $INSTALL_DIR && composer install"
 RUN su www-data -c "cd $INSTALL_DIR && composer config repositories.magento composer https://repo.magento.com/"  
-
+RUN su www-data -c "cd $INSTALL_DIR && composer config repositories.data-migration-tool git https://github.com/magento/data-migration-tool && composer require magento/data-migration-tool:2.3.0"
 
 COPY ./install-magento /usr/local/bin/install-magento
 RUN chmod +x /usr/local/bin/install-magento
@@ -62,6 +63,8 @@ COPY ./ssl-config.conf /etc/apache2/sites-enabled/ssl-config.conf
 RUN echo "memory_limit=2048M" > /usr/local/etc/php/conf.d/memory-limit.ini
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt update
+RUN apt-get -y install mysql-client
 
 WORKDIR $INSTALL_DIR
 
