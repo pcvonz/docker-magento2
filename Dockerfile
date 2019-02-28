@@ -55,7 +55,7 @@ RUN a2enmod rewrite
 RUN a2enmod ssl
 
 RUN mkdir /etc/apache2/ssl
-RUN cd /etc/apache2/ssl && openssl req -subj "/C=US/ST=WA/L=WA/O=Dockertest/OU=IT/CN=local.magento" -x509 -nodes -days 1095 -newkey rsa:2048 -out server.crt -keyout server.key
+RUN cd /etc/apache2/ssl && openssl req -subj "/C=US/ST=WA/L=WA/O=Dockertest/OU=IT/CN=next.bargreen.io" -x509 -nodes -days 1095 -newkey rsa:2048 -out server.crt -keyout server.key
 
 COPY ./ssl-config.conf /etc/apache2/sites-enabled/ssl-config.conf
 

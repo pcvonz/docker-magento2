@@ -1,7 +1,7 @@
 version: '3.0'
 services:
   web:
-    build: .
+    image: vonzimp/magento_pwa:2.3
     ports:
       - "80:80"
       - "443:443"
@@ -13,6 +13,7 @@ services:
     image: mysql:5.6.23
     volumes:
       - db-data:/var/lib/mysql/data
+      - ../bargreen_2_3.sql:/docker-entrypoint-initdb.d/dump.sql
     env_file:
       - env
   phpmyadmin:
